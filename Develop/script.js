@@ -71,9 +71,7 @@ var generatePassword = function() {
    // Unicode: 41-5A 
    var upperCase = confirm('Should the password include UPPERCASE letters?')
    if (upperCase) {
-     console.log(hex.hex_to_int('41'));
-    for (i=(hex.hex_to_int("41")); i<=(hex.hex_to_int('5A')); i++) {
-      console.log(i);
+    for (var i = (hex.hex_to_int("41")); i <= (hex.hex_to_int('5A')); i++) {
       includedCharList += hex.int_to_hex(i);
     };
    };
@@ -81,7 +79,7 @@ var generatePassword = function() {
    // Unicode: 61-7A
    var lowerCase = confirm('Should the password include LOWERCASE letters?')
    if (lowerCase) {
-    for (i=hex.hex_to_int("61"); i<=hex.hex_to_int('7A'); i++) {
+    for (var i=hex.hex_to_int("61"); i<=hex.hex_to_int('7A'); i++) {
       includedCharList += hex.int_to_hex(i);
     };
    };
@@ -89,7 +87,7 @@ var generatePassword = function() {
    // Unicode: 30-39
    var num = confirm('Should the password include NUMBERS?')
    if (num) {
-    for (i=hex.hex_to_int("30"); i<=hex.hex_to_int('39'); i++) {
+    for (var i=hex.hex_to_int("30"); i<=hex.hex_to_int('39'); i++) {
       includedCharList += hex.int_to_hex(i);
     };
    };
@@ -97,16 +95,16 @@ var generatePassword = function() {
    // Unicode: 20-2F, 3A-40, 5B-60, 7B-7E
    var specialChar = confirm('Should the password include SPECIAL CHARACTERS?')
    if (specialChar) {
-     for (i=hex.hex_to_int("20"); i<=hex.hex_to_int('2F'); i++) {
+     for (var i=hex.hex_to_int("20"); i<=hex.hex_to_int('2F'); i++) {
        includedCharList += hex.int_to_hex(i);
      };
-     for (i=hex.hex_to_int("3A"); i<=hex.hex_to_int('40'); i++) {
+     for (var i=hex.hex_to_int("3A"); i<=hex.hex_to_int('40'); i++) {
       includedCharList += hex.int_to_hex(i);
     };
-    for (i=hex.hex_to_int("5B"); i<=hex.hex_to_int('60'); i++) {
+    for (var i=hex.hex_to_int("5B"); i<=hex.hex_to_int('60'); i++) {
       includedCharList += hex.int_to_hex(i);
     };
-    for (i=hex.hex_to_int("7B"); i<=hex.hex_to_int('7E'); i++) {
+    for (var i=hex.hex_to_int("7B"); i<=hex.hex_to_int('7E'); i++) {
       includedCharList += hex.int_to_hex(i);
     };
    };
