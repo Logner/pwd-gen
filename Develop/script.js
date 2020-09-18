@@ -66,13 +66,15 @@ var generatePassword = function() {
 
   // Selecting types of characters to be included in the Password
   var includedCharList = [];
+  console.log(includedCharList);
 
-  while (!(includedCharList === [])) {
+  while (!(includedCharList.length > 0)) {
+
    // Unicode: 41-5A 
    var upperCase = confirm('Should the password include UPPERCASE letters?')
    if (upperCase) {
     for (var i = (hex.hex_to_int("41")); i <= (hex.hex_to_int('5A')); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
    };
 
@@ -80,7 +82,7 @@ var generatePassword = function() {
    var lowerCase = confirm('Should the password include LOWERCASE letters?')
    if (lowerCase) {
     for (var i=hex.hex_to_int("61"); i<=hex.hex_to_int('7A'); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
    };
 
@@ -88,7 +90,7 @@ var generatePassword = function() {
    var num = confirm('Should the password include NUMBERS?')
    if (num) {
     for (var i=hex.hex_to_int("30"); i<=hex.hex_to_int('39'); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
    };
 
@@ -96,32 +98,28 @@ var generatePassword = function() {
    var specialChar = confirm('Should the password include SPECIAL CHARACTERS?')
    if (specialChar) {
      for (var i=hex.hex_to_int("20"); i<=hex.hex_to_int('2F'); i++) {
-       includedCharList += hex.int_to_hex(i);
+       includedCharList.push(String.fromCharCode(i));
      };
      for (var i=hex.hex_to_int("3A"); i<=hex.hex_to_int('40'); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
     for (var i=hex.hex_to_int("5B"); i<=hex.hex_to_int('60'); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
     for (var i=hex.hex_to_int("7B"); i<=hex.hex_to_int('7E'); i++) {
-      includedCharList += hex.int_to_hex(i);
+      includedCharList.push(String.fromCharCode(i));
     };
    };
+   console.log(includedCharList);
   };
 
   // Generating the password
-  var pwd = '';
+  var pwd = "";
   var lenLst = includedCharList.length
-  console.log(len)
-  console.log(lenLst)
 
   for (i=0; i < len; i++) {
     pwd += includedCharList[Math.floor((Math.random()*lenLst))]
   }
-
-  console.log(pwd)
-  console.log(pwd.length)
 
   // Returning Computed Password
   return pwd;
