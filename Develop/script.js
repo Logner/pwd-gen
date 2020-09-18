@@ -52,76 +52,64 @@ var hex = {
   }
 }
 
+// Function that generates the password
+// requirements: hex class
 var generatePassword = function() {
 
   // Input Verification
-
   // Selecting Password Length
   var len = prompt("Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
 
-  // Try again until valid input is confirmed
+  // Try again until entered number is between 8 and 128 is confirmed
    while (!(parseInt(len) && (len)>7 && (len)<129)) {
-     len = prompt("Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
+     len = prompt("Try again: \n\n Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
    }
 
   // Selecting types of characters to be included in the Password
   var includedCharList = [];
-  console.log(includedCharList);
 
+  // takes Unicode start and end, appends corresponding characters to includedCharList
+  function gen_continuous_char_list(start_hex, end_hex) {
+    for (var i = (hex.hex_to_int(start_hex)); i <= (hex.hex_to_int(end_hex)); i++) {
+      includedCharList.push(String.fromCharCode(i));
+    };
+  };
+
+  // If no character type has been selected, repeat.
   while (!(includedCharList.length > 0)) {
 
    // Unicode: 41-5A 
-   var upperCase = confirm('Should the password include UPPERCASE letters?')
-   if (upperCase) {
-    for (var i = (hex.hex_to_int("41")); i <= (hex.hex_to_int('5A')); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
-   };
+   var upperCase = confirm('Should the password include UPPERCASE letters?');
+   if (upperCase) {gen_continuous_char_list('41', '5A')};
 
    // Unicode: 61-7A
    var lowerCase = confirm('Should the password include LOWERCASE letters?')
-   if (lowerCase) {
-    for (var i=hex.hex_to_int("61"); i<=hex.hex_to_int('7A'); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
-   };
+   if (lowerCase) {gen_continuous_char_list('61', '7A')};
 
    // Unicode: 30-39
    var num = confirm('Should the password include NUMBERS?')
-   if (num) {
-    for (var i=hex.hex_to_int("30"); i<=hex.hex_to_int('39'); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
-   };
+   if (num) {gen_continuous_char_list('30', '39')};
 
    // Unicode: 20-2F, 3A-40, 5B-60, 7B-7E
    var specialChar = confirm('Should the password include SPECIAL CHARACTERS?')
    if (specialChar) {
-     for (var i=hex.hex_to_int("20"); i<=hex.hex_to_int('2F'); i++) {
-       includedCharList.push(String.fromCharCode(i));
-     };
-     for (var i=hex.hex_to_int("3A"); i<=hex.hex_to_int('40'); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
-    for (var i=hex.hex_to_int("5B"); i<=hex.hex_to_int('60'); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
-    for (var i=hex.hex_to_int("7B"); i<=hex.hex_to_int('7E'); i++) {
-      includedCharList.push(String.fromCharCode(i));
-    };
+    gen_continuous_char_list('20', '2F');
+    gen_continuous_char_list('3A', '40');
+    gen_continuous_char_list('5B', '60');
+    gen_continuous_char_list('7B', '7E')
    };
-   console.log(includedCharList);
+   console.log("These characters have been included in the password: " + includedCharList);
   };
 
-  // Generating the password
+  // Variables for generating the password
   var pwd = "";
-  var lenLst = includedCharList.length
 
+  // Generating the password
   for (i=0; i < len; i++) {
-    pwd += includedCharList[Math.floor((Math.random()*lenLst))]
+    // Selecting a random character from includedCharList to append to the generated password
+    pwd += includedCharList[Math.floor((Math.random()*includedCharList.length))]
   }
-
-  // Returning Computed Password
+  // Returning generated password
   return pwd;
 };
 
