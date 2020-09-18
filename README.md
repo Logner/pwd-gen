@@ -1,4 +1,4 @@
-# Password Generator
+# [Password Generator](https://logner.github.io/pwd-gen)
 
 A simple password generator that asks for inputs in the form of prompts.
 
