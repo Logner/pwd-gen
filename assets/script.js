@@ -58,11 +58,11 @@ var generatePassword = function() {
 
   // Input Verification
   // Selecting Password Length
-  var len = prompt("Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
+  var pwd_len = prompt("Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
 
   // Try again until entered number is between 8 and 128 is confirmed
    while (!(parseInt(len) && (len)>7 && (len)<129)) {
-     len = prompt("Try again: \n\n Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
+     pwd_len = prompt("Try again: \n\n Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
    }
 
   // Selecting types of characters to be included in the Password
@@ -101,11 +101,11 @@ var generatePassword = function() {
    console.log("These characters have been included in the password: " + includedCharList);
   };
 
-  // Variables for generating the password
+  // empty password container
   var pwd = "";
 
   // Generating the password
-  for (i=0; i < len; i++) {
+  for (i=0; i < pwd_len; i++) {
     // Selecting a random character from includedCharList to append to the generated password
     pwd += includedCharList[Math.floor((Math.random()*includedCharList.length))]
   }
