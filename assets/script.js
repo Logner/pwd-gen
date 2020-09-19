@@ -61,7 +61,7 @@ var generatePassword = function() {
   var pwd_len = prompt("Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
 
   // Try again until entered number is between 8 and 128 is confirmed
-   while (!(parseInt(len) && (len)>7 && (len)<129)) {
+   while (!(parseInt(pwd_len) && (pwd_len)>7 && (pwd_len)<129)) {
      pwd_len = prompt("Try again: \n\n Please type in the desired length of password \n minimum: 8 characters \n maximum: 128 characters");
    }
 
